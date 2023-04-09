@@ -41,12 +41,20 @@ function resetSung(){
         cb.checked = false;
     })
 }
+const HOrV = ['hidden', 'hidden', 'hidden', 'hidden']
 function junmuChecked(){
     var main = document.getElementById("PlusJunmu").style.visibility
     if(main=="hidden"){
         document.getElementById("PlusJunmu").style.visibility = "visible"
+        document.getElementById("PlusJaeryon1").style.visibility = HOrV[1]
+        document.getElementById("PlusJaeryon2").style.visibility = HOrV[2]
+        document.getElementById("PlusJaeryon3").style.visibility = HOrV[3]
+        HOrV[0] = "visible"
     }else{
         document.getElementById("PlusJunmu").style.visibility = "hidden"
+        document.getElementById("PlusJaeryon1").style.visibility = "hidden"
+        document.getElementById("PlusJaeryon2").style.visibility = "hidden"
+        document.getElementById("PlusJaeryon3").style.visibility = "hidden"
     }
 }
 function PlusChanged(){
@@ -55,19 +63,33 @@ function PlusChanged(){
         document.getElementById("PlusJaeryon1").style.visibility = "hidden"
         document.getElementById("PlusJaeryon2").style.visibility = "hidden"
         document.getElementById("PlusJaeryon3").style.visibility = "hidden"
+        for(let i = 1; i < 4; i++){
+            HOrV[i] = 'hidden'
+        }
     }else{
         if(PC==1){
             document.getElementById("PlusJaeryon1").style.visibility = "visible"
             document.getElementById("PlusJaeryon2").style.visibility = "hidden"
             document.getElementById("PlusJaeryon3").style.visibility = "hidden"
+            HOrV[1] = 'visible'
+            for(let i = 2; i < 4; i++){
+                HOrV[i] = 'hidden'
+            }
         }else if(PC==2){
             document.getElementById("PlusJaeryon1").style.visibility = "visible"
             document.getElementById("PlusJaeryon2").style.visibility = "visible"
             document.getElementById("PlusJaeryon3").style.visibility = "hidden"
+            for(let i = 1; i < 3; i++){
+                HOrV[i] = 'visible'
+            }
+            HOrV[3] = 'hidden'
         }else if(PC==3){
             document.getElementById("PlusJaeryon1").style.visibility = "visible"
             document.getElementById("PlusJaeryon2").style.visibility = "visible"
             document.getElementById("PlusJaeryon3").style.visibility = "visible"
+            for(let i = 1; i < 4; i++){
+                HOrV[i] = 'visible'
+            }
         }
     }
 }

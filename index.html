@@ -30,7 +30,8 @@
                 </div>
             </div>
             <div class="sector weaponEnforce" id="weaponEnforce" style="visibility: hidden;">
-                <div class="title">무기 돌파 레벨 / 재련 단계</div>
+                <div class="titles">무기 돌파 레벨 / 재련 단계</div>
+                <h5>모든 무기는 돌파 이후<br>최대레벨시의 무기 능력치를 기준으로 합니다.</h5>
                 <div class="description" id="WeaponLevel">
                     <img src="./image/levels/level0.PNG" id="WeaponLevelImage">
                     <select name="WLevel" id="WLevel" onchange="WLevelChanged()"></select>
@@ -42,7 +43,8 @@
             </div>
             <div class="sector sungyumul">
                 <div>
-                    <div class="title">나히다의 성유물 종류</div>
+                    <div class="title"><h3>나히다의 성유물 종류(필수 아님)</h3></div>
+                    <h5>성유물을 선택할 경우 해당 성유물 기준<br>필요 원소 마스터리를 제출합니다.<br>선택하지 않을 경우 도금된 꿈과 숲의 기억을 포함한<br>전부의 필요 원소 마스터리를 제출합니다.</h5>
                     <input type="checkbox" name="chk_info" value="dogum" onclick='checkOnlyOne(this)'>도금된 꿈
                     <input type="checkbox" name="chk_info" value="supgi" onclick='checkOnlyOne(this)'>숲의 기억
                     <input type="checkbox" name="chk_info" value="etc" onclick='checkOnlyOne(this)'>기타
