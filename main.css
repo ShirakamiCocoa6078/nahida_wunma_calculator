@@ -71,11 +71,11 @@ select {
 }
 
 .namulink, .imgLink, strong, #warning{
-    color: red;
+    color: rgb(252, 70, 70);
 }
 @supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
     .namulink, .imgLink{
-    background: -webkit-linear-gradient(0deg, red, orange, yellow, green, blue, navy, purple);
+    background: -webkit-linear-gradient(0deg, red, orange, yellow, rgb(3, 199, 3), rgb(79, 79, 255), rgb(69, 69, 255), rgb(214, 19, 214));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }}
