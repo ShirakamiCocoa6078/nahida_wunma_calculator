@@ -34,9 +34,15 @@ const notOwn_weapon={
 5:'48'
 }
 
-const nahida_star ={0:'0',1:'0',2:'0',3:'0',4:['100','120','140','160'],5:'0',6:'0'}
+const nahida_star ={
+0:'0',1:'0',2:'0',3:'0',
+4:['100','120','140','160'],
+5:'0',6:'0'}
 
-const party_synergy = {1:'0',2:['50','30','20'],3:['50','30','20'],4:['50','30','20']}
+const party_synergy = {1:'0',
+2:['50','30','20'],
+3:['50','30','20'],
+4:['50','30','20']}
 
 const another = [{
 "2c":'120',
@@ -54,6 +60,4 @@ const another = [{
 }]
 
 function resultPrint(){
-    var result = "True"
-    window.location.href = `${window.location.search}?result`
 }
