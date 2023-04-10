@@ -26,6 +26,14 @@ const own_weapon_jaeryon =[{
 "기타 무기(원소 마스터리에 영향이 없는 무기)" : {1:'0',2:'0',3:'0',4:'0',5:'0'}
 }]
 
+const notOwn_weapon={
+1:'40',
+2:'42',
+3:'44',
+4:'46',
+5:'48'
+}
+
 const nahida_star ={0:'0',1:'0',2:'0',3:'0',4:['100','120','140','160'],5:'0',6:'0'}
 
 const party_synergy = {1:'0',2:['50','30','20'],3:['50','30','20'],4:['50','30','20']}
@@ -44,3 +52,7 @@ const another = [{
 "12c":'80',
 "13c":'60'
 }]
+
+function resultPrint(){
+    window.location.href = `${window.location.search}?result`
+}
