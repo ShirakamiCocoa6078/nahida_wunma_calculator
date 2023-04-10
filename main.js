@@ -15,7 +15,7 @@ function isMobile() {
 var a = 10
 while(a>0){
     if(isMobile()){
-        window.location.href("https://shirakamicocoa6078.github.io/alpano/")
+        window.location.replace("https://shirakamicocoa6078.github.io/alpano/")
         break
     }else{
         a = a-1
@@ -64,7 +64,7 @@ function resetSung(){
         cb.checked = false;
     })
 }
-const HOrV = ['hidden', 'hidden', 'hidden', 'hidden']
+var HOrV = ['hidden', 'hidden', 'hidden', 'hidden']
 function junmuChecked(){
     var main = document.getElementById("PlusJunmu").style.visibility
     if(main=="hidden"){
