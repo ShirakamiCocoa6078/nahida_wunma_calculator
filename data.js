@@ -54,5 +54,6 @@ const another = [{
 }]
 
 function resultPrint(){
+    var result = "True"
     window.location.href = `${window.location.search}?result`
 }
