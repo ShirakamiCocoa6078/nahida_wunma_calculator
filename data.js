@@ -84,7 +84,8 @@ var PlusElement = {
 'SecW' : 0,
 'ThiW' : 0
 }
-var
+var all_result = {
+}
 function resultPrint(){
     var NLevel = document.getElementById('Clevel').selectedIndex //나히다 레벨
     var SelectedW= document.getElementById('weapon-listbox').value //선택한 무기
@@ -109,9 +110,8 @@ function resultPrint(){
         var NL = ['firW', 'SecW', 'ThiW']
         var HowManyUse = document.getElementById("PlusJunmuSelect").selectedIndex //전무쓰는애들
         for(let i = 0; i<= HowManyUse; i++){
-            PlusElement[NL[i]] = eval(`document.getElementById(PlusJaeryon${i+1}).selectedIndex`)
+            PlusElement[NL[i]] = document.getElementById(`PlusJaeryon${i+1}`).selectedIndex
         }
     }
-
     window.open('result.html', '계산 결과', 'width=1000, height=700, scrollbars= 0, toolbar=0, menubar=no');
 }
