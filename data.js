@@ -89,15 +89,7 @@ function reloading(){
     var Party2= document.getElementById('second').value //파티 3번
     var Party3= document.getElementById('third').value //파티 4번
     var synergy = [Party1, Party2, Party3]
-    //히든 요소들
-    PlusElement['checkedJunmu'] = document.getElementById("Junmu").checked //전무 딴캐가 쓸때
-    if(document.getElementById("Junmu").checked){
-        var NL = ['firW', 'SecW', 'ThiW']
-        var HowManyUse = document.getElementById("PlusJunmuSelect").selectedIndex //전무쓰는애들
-        for(let i = 0; i<HowManyUse; i++){
-            PlusElement[NL[i]] = document.getElementById(`PlusJaeryon${i+1}`).selectedIndex
-        }
-    }
+
     //변수들 사용하기
     var party_synergy = 0
     if (Party1 === "ful" || Party2 === "ful" || Party3 === "ful") {
@@ -126,9 +118,7 @@ function reloading(){
     var OWJV2 = OWJV*count //나히다 전무 스킬에서 오는 원마
     var WValue = SWV+OWJV2 //무기 자체에서 오는 원마
 
-    var PlusElementWunma = notOwn_weapon[PlusElement['firW']]+notOwn_weapon[PlusElement['SecW']]+notOwn_weapon[PlusElement['ThiW']]
-    //다른캐릭들 무기에서 오는 원마
-    var normalWunma = NLvlVal+WValue+PlusElementWunma //나히다의 평상시 원마
+    var normalWunma = NLvlVal+WValue //나히다의 평상시 원마
     var isit4dol = [nahida_star[NDolpa][0], nahida_star[NDolpa][1]] //1마리 마킹시, 4마리 이상 마킹시
     document.getElementById("Efirst").innerHTML = `나히다 기본(무기 제외) 성유물 필요 원소 마스터리 : ${1000-NLvlVal} 필요`
     document.getElementById("Esecond").innerHTML = `나히다 무기포함 성유물 필요 원소 마스터리 : ${1000-normalWunma} 필요`
