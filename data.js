@@ -60,4 +60,5 @@ const another = [{
 }]
 
 function resultPrint(){
+    window.open('result.html', '계산 결과', 'width=1000, height=700, scrollbars= 0, toolbar=0, menubar=no');
 }
