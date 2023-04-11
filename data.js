@@ -35,13 +35,13 @@ const notOwn_weapon={
 }
 
 const nahida_star ={
-0:[0,0,0,0],
-1:[0,0,0,0],
-2:[0,0,0,0],
-3:[0,0,0,0],
-4:[100,120,140,160],
-5:[100,120,140,160],
-6:[100,120,140,160]}
+0:[0,0],
+1:[0,0],
+2:[0,0],
+3:[0,0],
+4:[100,160],
+5:[100,160],
+6:[100,160]}
 
 const another = [{
 "2c":120,
@@ -77,62 +77,64 @@ var PlusElement = {
 
 
 */
-var all_result = {
-    '1':'nullValue',
-    '2':'nullValue',
-    '3':'nullValue'
-}
-function resultPrint(){
-    try{
-        //변수들 가져오기
-        var NLevel = document.getElementById('Clevel').selectedIndex //나히다 레벨
-        var SelectedW= document.getElementById('weapon-listbox').value //선택한 무기
-        var WLevel= document.getElementById('WLevel').selectedIndex //무기의 레벨
-        var WJaeryon= document.getElementById('JLevel').selectedIndex //무기의 재련도
-        var NDolpa= document.getElementById('dolpa').selectedIndex //나히다 몇돌
-        var Party1= document.getElementById('first').value //파티 2번
-        var Party2= document.getElementById('second').value //파티 3번
-        var Party3= document.getElementById('third').value //파티 4번
-        var synergy = [Party1, Party2, Party3]
-        //히든 요소들
-        PlusElement['checkedJunmu'] = document.getElementById("Junmu").checked //전무 딴캐가 쓸때
-        if(document.getElementById("Junmu").checked){
-            var NL = ['firW', 'SecW', 'ThiW']
-            var HowManyUse = document.getElementById("PlusJunmuSelect").selectedIndex //전무쓰는애들
-            for(let i = 0; i<= HowManyUse; i++){
-                PlusElement[NL[i]] = document.getElementById(`PlusJaeryon${i+1}`).selectedIndex
-            }
+function reloading(){
+    //변수들 가져오기
+    var NLevel = document.getElementById('Clevel').selectedIndex //나히다 레벨
+    var SelectedW= document.getElementById('weapon-listbox').value //선택한 무기
+    var WLevel= document.getElementById('WLevel').selectedIndex //무기의 레벨
+    var WJaeryon= document.getElementById('JLevel').selectedIndex //무기의 재련도
+    var NDolpa= document.getElementById('dolpa').selectedIndex //나히다 몇돌
+    var Party1= document.getElementById('first').value //파티 2번
+    var Party2= document.getElementById('second').value //파티 3번
+    var Party3= document.getElementById('third').value //파티 4번
+    var synergy = [Party1, Party2, Party3]
+    //히든 요소들
+    PlusElement['checkedJunmu'] = document.getElementById("Junmu").checked //전무 딴캐가 쓸때
+    if(document.getElementById("Junmu").checked){
+        var NL = ['firW', 'SecW', 'ThiW']
+        var HowManyUse = document.getElementById("PlusJunmuSelect").selectedIndex //전무쓰는애들
+        for(let i = 0; i<HowManyUse; i++){
+            PlusElement[NL[i]] = document.getElementById(`PlusJaeryon${i+1}`).selectedIndex
         }
-        //변수들 사용하기
-        var NLvlVal = levelWunma[NLevel] //나히다 기본 원마
-        var SWV = own_weapon_level[SelectedW][WLevel] //선택한 무기의 레벨에서 오는 원마
-        var OWJV = own_weapon_jaeryon[SelectedW][WJaeryon] //선택한 무기의 재련에서 오는 원마
-        if (Party1 === "ful" || Party2 === "ful" || Party3 === "ful") {
-            var party_synergy = 50;
-        }
-        let count = 0
-        for (let i in synergy){
-            if(i == 'ful'){
-                count++
-            }
-        }
-        if(count==0){
+    }
+    //변수들 사용하기
+    var NLvlVal = levelWunma[NLevel] //나히다 기본 원마
+    var SWV = own_weapon_level[SelectedW][WLevel] //선택한 무기의 레벨에서 오는 원마
+    var OWJV = own_weapon_jaeryon[SelectedW][WJaeryon] //선택한 무기의 재련에서 오는 원마
+    if (Party1 === "ful" || Party2 === "ful" || Party3 === "ful") {
+        var party_synergy = 50;
+    }
+    let count = 0
+    for (let i in synergy){
+        if(i == 'ful'){
             count++
         }
-        var OWJV2 = OWJV*count //나히다 전무 스킬에서 오는 원마
-        var WValue = SWV+OWJV2 //무기 자체에서 오는 원마
-
-        var PlusElementWunma = notOwn_weapon[PlusElement['firW']]+notOwn_weapon[PlusElement['SecW']]+notOwn_weapon[PlusElement['ThiW']]
-        //다른캐릭들 무기에서 오는 원마
-        var normalWunma = NLvlVal+WValue+PlusElementWunma //나히다의 평상시 원마
-        var isit4dol = [nahida_star[NDolpa][0], nahida_star[NDolpa][4]] //1마리 마킹시, 4마리 이상 마킹시
-        all_result['1'] = NLvlVal
-        all_result['2'] = normalWunma
-        all_result['3'] = isit4dol
-        window.open('result.html', '계산 결과', 'width=1000, height=900, location=0, menubar=1');
-        var first = document.getElementById("first").innerText
-        document.getElementById("first").innerText = first+all_result['1']
-    }catch(error){
-        alert("입력해야할 값들을 입력해주세요");
     }
+    var minos_count = 3-count
+    if(count==0){
+        count++
+    }
+    var Checkedboxes = document.getElementsByName("etc");
+    var checkedWunma = 0
+    Checkedboxes.forEach((cb) => {
+        if(cb.checked){
+            checkedWunma += another[cb.value]
+        }
+    })
+    var OWJV2 = OWJV*count //나히다 전무 스킬에서 오는 원마
+    var WValue = SWV+OWJV2 //무기 자체에서 오는 원마
+
+    var PlusElementWunma = notOwn_weapon[PlusElement['firW']]+notOwn_weapon[PlusElement['SecW']]+notOwn_weapon[PlusElement['ThiW']]
+    //다른캐릭들 무기에서 오는 원마
+    var normalWunma = NLvlVal+WValue+PlusElementWunma //나히다의 평상시 원마
+    var isit4dol = [nahida_star[NDolpa][0], nahida_star[NDolpa][4]] //1마리 마킹시, 4마리 이상 마킹시
+
+    document.getElementById("Efirst").innerHTML = `나히다 기본(무기 제외) 성유물 필요 원소 마스터리 : ${1000-NLvlVal}`
+    document.getElementById("Esecond").innerHTML = `나히다 무기포함 성유물 필요 원소 마스터리 : ${1000-normalWunma}`
+    document.getElementById("Ethird").innerHTML = `상위 포함 1마리 마킹시 / 4마리 이상 마킹시 : ${1000-(normalWunma+isit4dol[0])} / ${1000-(normalWunma+isit4dol[1])}`
+    document.getElementById("Efourth").innerHTML = `상위 포함 체크조건 포함시 = ${1000-(normalWunma+isit4dol[0]+checkedWunma+(50*minos_count))} / ${1000-(normalWunma+isit4dol[1]+checkedWunma)}`
+    document.getElementById("Efifth").innerHTML = `공풀치 체크미포함(도금된 꿈/숲의 기억) = 부옵에서 ${1000-(normalWunma+isit4dol[0]+(50*minos_count))} / ${1000-(normalWunma+isit4dol[0])}`
+    document.getElementById("Esixth").innerHTML = `원풀치 체크미포함(도금된 꿈/숲의 기억) = 부옵에서 ${813-(normalWunma+isit4dol[0]+(50*minos_count))} / ${813-(normalWunma+isit4dol[0])}`
+    document.getElementById("Eseventh").innerHTML = `원원치 체크미포함(도금된 꿈/숲의 기억) = 부옵에서 ${626-(normalWunma+isit4dol[0]+(50*minos_count))} / ${626-(normalWunma+isit4dol[0])}`
+    document.getElementById("Eeighth").innerHTML = `원원원 체크미포함(도금된 꿈/숲의 기억) = 부옵에서 ${439-(normalWunma+isit4dol[0]+(50*minos_count))} / ${439-(normalWunma+isit4dol[0])}`
 }
