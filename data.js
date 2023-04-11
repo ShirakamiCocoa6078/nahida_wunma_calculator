@@ -99,15 +99,14 @@ function reloading(){
         }
     }
     //변수들 사용하기
+    var party_synergy = 0
     if (Party1 === "ful" || Party2 === "ful" || Party3 === "ful") {
-        var party_synergy = 50;
+        party_synergy = 50;
     }
-    let count = 0
-    let fulgongmyong = 0
+    var count = 0
     for (let i in synergy){
-        if(i == 'ful'){
+        if(synergy[i] == 'ful'){
             count++
-            fulgongmyong = 50
         }
     }
     var minos_count = 3-count
@@ -121,7 +120,7 @@ function reloading(){
             checkedWunma += another[cb.value]
         }
     })
-    var NLvlVal = levelWunma[NLevel]+fulgongmyong //나히다 기본 원마
+    var NLvlVal = levelWunma[NLevel]+party_synergy //나히다 기본 원마
     var SWV = own_weapon_level[SelectedW][WLevel] //선택한 무기의 레벨에서 오는 원마
     var OWJV = own_weapon_jaeryon[SelectedW][WJaeryon+1] //선택한 무기의 재련에서 오는 원마
     var OWJV2 = OWJV*count //나히다 전무 스킬에서 오는 원마
@@ -131,13 +130,16 @@ function reloading(){
     //다른캐릭들 무기에서 오는 원마
     var normalWunma = NLvlVal+WValue+PlusElementWunma //나히다의 평상시 원마
     var isit4dol = [nahida_star[NDolpa][0], nahida_star[NDolpa][1]] //1마리 마킹시, 4마리 이상 마킹시
-    document.getElementById("test").innerHTML =`PlusElement = ${PlusElement} / NLvlVal = ${NLvlVal} / SWV = ${SWV} / OWJV = ${OWJV} / count = ${count} / minos_count = ${minos_count} / checkedWunma = ${checkedWunma} / OWJV2 = ${OWJV2} / WValue = ${WValue} / PlusElementWunma = ${PlusElementWunma} / normalWunma = ${normalWunma} / isit4dol = ${isit4dol}`
     document.getElementById("Efirst").innerHTML = `나히다 기본(무기 제외) 성유물 필요 원소 마스터리 : ${1000-NLvlVal} 필요`
     document.getElementById("Esecond").innerHTML = `나히다 무기포함 성유물 필요 원소 마스터리 : ${1000-normalWunma} 필요`
     document.getElementById("Ethird").innerHTML = `상위 포함 1마리 마킹시 / 4마리 이상 마킹시 : ${1000-(normalWunma+isit4dol[0])} / ${1000-(normalWunma+isit4dol[1])} 필요`
-    document.getElementById("Efourth").innerHTML = `상위 포함 체크조건 포함시 = ${1000-(normalWunma+isit4dol[0]+checkedWunma+(50*minos_count))} / ${1000-(normalWunma+isit4dol[1]+checkedWunma)} 필요`
+    document.getElementById("Efourth").innerHTML = `상위 포함 체크조건 포함시 나히다의 원소 마스터리 = ${(normalWunma+isit4dol[0]+checkedWunma+(50*minos_count))} / ${(normalWunma+isit4dol[1]+checkedWunma)}`
     document.getElementById("Efifth").innerHTML = `공풀치 체크미포함(도금된 꿈/숲의 기억) = 부옵에서 ${1000-(normalWunma+isit4dol[0]+(50*minos_count))} / ${1000-(normalWunma+isit4dol[0])} 필요`
     document.getElementById("Esixth").innerHTML = `원풀치 체크미포함(도금된 꿈/숲의 기억) = 부옵에서 ${813-(normalWunma+isit4dol[0]+(50*minos_count))} / ${813-(normalWunma+isit4dol[0])} 필요`
     document.getElementById("Eseventh").innerHTML = `원원치 체크미포함(도금된 꿈/숲의 기억) = 부옵에서 ${626-(normalWunma+isit4dol[0]+(50*minos_count))} / ${626-(normalWunma+isit4dol[0])} 필요`
     document.getElementById("Eeighth").innerHTML = `원원원 체크미포함(도금된 꿈/숲의 기억) = 부옵에서 ${439-(normalWunma+isit4dol[0]+(50*minos_count))} / ${439-(normalWunma+isit4dol[0])} 필요`
+    document.getElementById("Esip").innerHTML = `공풀치 체크포함(도금된 꿈/숲의 기억) = 부옵에서 ${1000-(normalWunma+isit4dol[0]+checkedWunma+(50*minos_count))} / ${1000-(normalWunma+isit4dol[0]+checkedWunma)} 필요`
+    document.getElementById("Esipil").innerHTML = `원풀치 체크포함(도금된 꿈/숲의 기억) = 부옵에서 ${813-(normalWunma+isit4dol[0]+checkedWunma+(50*minos_count))} / ${813-(normalWunma+isit4dol[0]+checkedWunma)} 필요`
+    document.getElementById("Esipe").innerHTML = `원원치 체크포함(도금된 꿈/숲의 기억) = 부옵에서 ${626-(normalWunma+isit4dol[0]+checkedWunma+(50*minos_count))} / ${626-(normalWunma+isit4dol[0]+checkedWunma)} 필요`
+    document.getElementById("Esipsam").innerHTML = `원원원 체크포함(도금된 꿈/숲의 기억) = 부옵에서 ${439-(normalWunma+isit4dol[0]+checkedWunma+(50*minos_count))} / ${439-(normalWunma+isit4dol[0]+checkedWunma)} 필요`
 }
