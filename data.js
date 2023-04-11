@@ -77,23 +77,41 @@ var etcValue = {
 '12c': false, //헤이조 돌파
 '13c': false  //콜레이 4돌
 }
+var PlusElement = {
+'checkedJunmu' : false,
+'HowManyUse' : 0,
+'firW' : 0,
+'SecW' : 0,
+'ThiW' : 0
+}
+var
 function resultPrint(){
-    document.getElementById('Clevel').selectedIndex //나히다 레벨
-    document.getElementById('weapon-listbox').value //선택한 무기
-    document.getElementById('WLevel').selectedIndex //무기의 레벨
-    document.getElementById('JLevel').selectedIndex //무기의 재련도
+    var NLevel = document.getElementById('Clevel').selectedIndex //나히다 레벨
+    var SelectedW= document.getElementById('weapon-listbox').value //선택한 무기
+    var WLevel= document.getElementById('WLevel').selectedIndex //무기의 레벨
+    var WJaeryon= document.getElementById('JLevel').selectedIndex //무기의 재련도
     //성유물 선택 감지(도금, 숲기)
     var checkboxes= document.getElementsByName("chk_info");
     checkboxes.forEach((cb) => {
         sungYumul[cb.value] = cb.checked
     })
-    document.getElementById('dolpa').selectedIndex //나히다 몇돌
-    document.getElementById('first').selectedIndex //파티 2번
-    document.getElementById('second').selectedIndex //파티 3번
-    document.getElementById('third').selectedIndex //파티 4번
+    var NDolpa= document.getElementById('dolpa').selectedIndex //나히다 몇돌
+    var Party1= document.getElementById('first').selectedIndex //파티 2번
+    var Party2= document.getElementById('second').selectedIndex //파티 3번
+    var Party3= document.getElementById('third').selectedIndex //파티 4번
     var checkboxes=document.getElementsByName(etc);
     checkboxes.forEach((cb) => {
         etcValue[cb.value] = cb.checked
     })
+    //히든 요소들
+    PlusElement['checkedJunmu'] = document.getElementById("Junmu").checked //전무 딴캐가 쓸때
+    if(document.getElementById("Junmu").checked){
+        var NL = ['firW', 'SecW', 'ThiW']
+        var HowManyUse = document.getElementById("PlusJunmuSelect").selectedIndex //전무쓰는애들
+        for(let i = 0; i<= HowManyUse; i++){
+            PlusElement[NL[i]] = eval(`document.getElementById(PlusJaeryon${i+1}).selectedIndex`)
+        }
+    }
+
     window.open('result.html', '계산 결과', 'width=1000, height=700, scrollbars= 0, toolbar=0, menubar=no');
 }
