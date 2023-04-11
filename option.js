@@ -7,7 +7,7 @@ for (let level = 0; level <= 6; level++) {
     WlevelElement.add(new Option(`${level} 돌파`));
     DolpaElement.add(new Option(`${level} 돌파`));
 }
-for (let level=0; level <=5; level++){
+for (let level=1; level <=5; level++){
     JlevelElement.add(new Option(`${level} 재련`));
 }
 

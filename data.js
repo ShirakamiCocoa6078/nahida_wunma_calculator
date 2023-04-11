@@ -62,21 +62,6 @@ const another = [{
 "12c":'80',
 "13c":'60'
 }]
-var sungYumul = {'dogum':false, 'supgi':false} //도금, 숲기
-var etcValue = {
-'2c': false,  // 교관 4세트
-'3c': false,  // 종탄노
-'4c': false,  //원목검
-'5c': false,  //숲의 리게이
-'6c': false,  //풀행자
-'7c': false,  //알베도 돌파
-'8c': false,  //카즈하 2돌
-'9c': false,  //타이나리 4돌
-'10c': false, //닐루 돌파
-'11c': false, //디오나 6돌
-'12c': false, //헤이조 돌파
-'13c': false  //콜레이 4돌
-}
 var PlusElement = {
 'checkedJunmu' : false,
 'HowManyUse' : 0,
@@ -84,26 +69,28 @@ var PlusElement = {
 'SecW' : 0,
 'ThiW' : 0
 }
-var all_result = {
-}
+//사이트에 표기할 내용
+/*
+나히다 기본(무기 제외) 성유물 필요 원마
+나히다 무기포함 성유물 필요 원마
+공풀치가능여부(도금/숲기) = O면 각각 부옵필요량
+원풀치가능여부(도금/숲기) = O면 각각 부옵필요량
+원원치가능여부(도금/숲기) = O면 각각 부옵필요량
+원원원필수여부(도금/숲기) = O면 각각 부옵필요량
+
+
+
+
+*/
 function resultPrint(){
     var NLevel = document.getElementById('Clevel').selectedIndex //나히다 레벨
     var SelectedW= document.getElementById('weapon-listbox').value //선택한 무기
     var WLevel= document.getElementById('WLevel').selectedIndex //무기의 레벨
     var WJaeryon= document.getElementById('JLevel').selectedIndex //무기의 재련도
-    //성유물 선택 감지(도금, 숲기)
-    var checkboxes= document.getElementsByName("chk_info");
-    checkboxes.forEach((cb) => {
-        sungYumul[cb.value] = cb.checked
-    })
     var NDolpa= document.getElementById('dolpa').selectedIndex //나히다 몇돌
     var Party1= document.getElementById('first').selectedIndex //파티 2번
     var Party2= document.getElementById('second').selectedIndex //파티 3번
     var Party3= document.getElementById('third').selectedIndex //파티 4번
-    var checkboxes=document.getElementsByName(etc);
-    checkboxes.forEach((cb) => {
-        etcValue[cb.value] = cb.checked
-    })
     //히든 요소들
     PlusElement['checkedJunmu'] = document.getElementById("Junmu").checked //전무 딴캐가 쓸때
     if(document.getElementById("Junmu").checked){
@@ -113,5 +100,5 @@ function resultPrint(){
             PlusElement[NL[i]] = document.getElementById(`PlusJaeryon${i+1}`).selectedIndex
         }
     }
-    window.open('result.html', '계산 결과', 'width=1000, height=700, scrollbars= 0, toolbar=0, menubar=no');
+    window.open('result.html', '계산 결과', 'width=1000, height=700, location=0, menubar=1');
 }

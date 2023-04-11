@@ -42,17 +42,6 @@
                     <select name="WLevel" id="JLevel" onchange="jaeryonChanged()"></select>
                 </div>
             </div>
-            <div class="sector sungyumul">
-                <div>
-                    <div class="title"><h3>나히다의 성유물 종류(필수 아님)</h3></div>
-                    <h5>성유물을 선택할 경우 해당 성유물 기준<br>필요 원소 마스터리를 제출합니다.<br>선택하지 않을 경우 도금된 꿈과 숲의 기억을 포함한<br>전부의 필요 원소 마스터리를 제출합니다.</h5>
-                    <input type="checkbox" name="chk_info" value="dogum" onclick='checkOnlyOne(this)'>도금된 꿈
-                    <input type="checkbox" name="chk_info" value="supgi" onclick='checkOnlyOne(this)'>숲의 기억
-                </div>
-                <div class="cancelBtn">
-                    <input type="reset" name="cancelBtn" id="cancelBtn" onclick="resetSung()">체크 해제
-                </div>
-            </div>
         </div>
         <div class="element star">
             <h3>나히다의 운명의 별자리</h3>
@@ -71,9 +60,6 @@
             <div>
             모든 항목들은 나무위키 나히다 문서의 <a class="namulink" href="https://namu.wiki/w/%EB%82%98%ED%9E%88%EB%8B%A4#s-4"
                     target="_blank">4.운용/원소 마스터리 버프 목록</a>을 참조하였습니다.<br>
-            <a class="imgLink"
-                    href="./참고용이미지알빠노.PNG">사진한짤정리</a>
-                    <br>
                     <img src="./image/alpano.png" width="90"><span>설명은 내 알빠가 아니니 위에 무지개링크타고 찾아보세요.</span>
             </div>
             <label class="aw">파티 내 원소를 입력해주세요(나히다 제외 3명)</label><br>
@@ -86,26 +72,11 @@
                 3 : <select name="third" id="third">
                     <option value="etc" value="default">기타 원소</option>
                     <option value="ful">풀 원소</option></select></label><br><br>
-
             <div class="selectbox">
                 <div><input type="checkbox" id="Junmu" value="1c" onclick="junmuChecked()"><label for="1">떠오르는 천일 밤의 꿈<strong> 주의)나히다가 아닌 다른 파티원이 꼈을 경우에만 체크해주세요.</strong></label></div>
-                <div><input type="checkbox" name="etc" id="2c" value="2c"><label for="2">교관 4세트</label></div>
-                <div><input type="checkbox" name="etc" id="3c" value="3c"><label for="3">종말 탄식의 노래(5성 활)</label></div>
-                <div><input type="checkbox" name="etc" id="4c" value="4c"><label for="4">원목의 검(4성 한손검)</label></div>
-                <div><input type="checkbox" name="etc" id="5c" value="5c"><label for="5">숲의 리게일리어(4성 양손검)</label></div>
-                <div><input type="checkbox" name="etc" id="6c" value="6c"><label for="6">여행자/풀속성 돌파 특성 1</label></div>
-                <div><input type="checkbox" name="etc" id="7c" value="7c"><label for="8">알베도 돌파 특성 2</label></div>
-                <div><input type="checkbox" name="etc" id="8c" value="8c"><label for="9">카에데하라 카즈하 운명의 자리 2돌</label></div>
-                <div><input type="checkbox" name="etc" id="9c" value="9c"><label for="10">타이나리 운명의 자리 4돌</label></div>
-                <div><input type="checkbox" name="etc" id="10c" value="10c"><label for="11">닐루 돌파 특성 1</label></div>
-                <div><input type="checkbox" name="etc" id="11c" value="11c"><label for="12">디오나 운명의 자리 6돌</label></div>
-                <div><input type="checkbox" name="etc" id="12c" value="12c"><label for="13">시카노인 헤이조 돌파 특성 2</label></div>
-                <div><input type="checkbox" name="etc" id="13c" value="13c"><label for="14">콜레이 운명의 자리 4돌</label></div>
-                <h4 id="warning"><strong>⚠선택지 중 떠오르는 천일 밤의 꿈을 제외한 무기와 스택들은<br>개발자의 수학적 능력 부족으로 1재련/1스택 기준으로 계산됩니다.⚠</strong></h4>
             </div>
         </div>
     </div>
-
 
     <div class="element hiddenElement">
         <div id="PlusJunmu" style="visibility: hidden;">
